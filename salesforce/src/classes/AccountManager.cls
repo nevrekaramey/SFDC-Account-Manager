@@ -15,19 +15,18 @@ public with sharing class AccountManager {
     public String messageResponse {get;set;}
     public String remoteMessageResponse {get;set;}
 
-
     /*
       Ideally would set org URLs from custom setting so that URL value be dynamically changed.
     */
     //Remote Org URL
-    private static final String REMOTE_ORG_URL = 'https://eu6.salesforce.com/';
+    private static final String REMOTE_ORG_URL = 'https://na30.salesforce.com/';
     //Rest Api URL 
-    private static final String SERVICE_URL = 'https://eu6.salesforce.com/services/apexrest/Account/';
+    private static final String SERVICE_URL = 'https://na30.salesforce.com/services/apexrest/Account/';
 
     public AccountManager(){
-    	//Initializing all necessary objects.
-    	newAccount = new Account();
-    	accounts =   new List<Account>();
+        //Initializing all necessary objects.
+        newAccount = new Account();
+        accounts =   new List<Account>();
     }
     
     //Async invocation method
@@ -86,8 +85,8 @@ public with sharing class AccountManager {
     public PageReference insertRecord() {
 
       //List of accounts to be updated
-    	List<Account> updateAccounts = new List<Account>();
-    	//Map to maintain reference between new and remote account
+      List<Account> updateAccounts = new List<Account>();
+      //Map to maintain reference between new and remote account
       Map<Account, Account> refAccount = new Map<Account,Account>();
 
       Savepoint sp = Database.setSavepoint();
@@ -109,7 +108,7 @@ public with sharing class AccountManager {
 
           if(!refAccount.isEmpty()){
             for(Account acc : refAccount.keySet()){
-              acc.Org2_Id__c = REMOTE_ORG_URL + refAccount.get(acc).Id;
+              acc.Remote_Org_Reference__c = REMOTE_ORG_URL + refAccount.get(acc).Id;
               updateAccounts.add(acc);
             }
 
