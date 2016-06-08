@@ -1,0 +1,40 @@
+<apex:page controller="AccountManager" action="{!startRequests}">
+    <apex:form >
+        <apex:pageBlock title="Account Manager">
+
+            <apex:pageBlockSection title="Create Account">
+
+                <!--Message to display if account was created successfully or not.
+                  --Ideally would use apex:pageMessages to display messages but there seems to be a bug with Salesforce when invoking Continuation class.
+                -->
+                <apex:outputText value="{!messageResponse}"/><br/>
+
+                <apex:panelGrid columns="2">
+                    <apex:inputField id="accountNameId" value="{!newAccount.Name}" required="false"/>
+                    <apex:commandButton value="Create" action="{!InsertRecord}"/>
+                </apex:panelGrid>
+
+			</apex:pageBlockSection>
+
+            <!--Section to display accounts from remote org -->
+            <apex:pageBlockSection title="Accounts From Org2">
+
+                <apex:outputText value="{!remoteMessageResponse}"/><br/>
+
+                <apex:pageBlockTable value="{!accountList.accountsToShow}" id="accTable" var="acc">
+                    <apex:column value="{!acc.name}"/>                                     
+                </apex:pageBlockTable><br/>
+
+                <!--Navigation methods to navigate through paginated records-->
+                <apex:panelGrid columns="4">
+                    <apex:commandButton value="<<" action="{!accountList.start}" disabled="{!accountList.DisablePrevious}"/>
+                    <apex:commandButton value="<" action="{!accountList.previous}" disabled="{!accountList.DisablePrevious}"/>
+                    <apex:commandButton value=">" action="{!accountList.next}" disabled="{!accountList.DisableNext}"/>
+                    <apex:commandButton value=">>" action="{!accountList.last}" disabled="{!accountList.DisableNext}"/> 
+                </apex:panelGrid>
+
+            </apex:pageBlockSection>
+
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>
