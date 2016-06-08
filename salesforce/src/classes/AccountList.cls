@@ -7,12 +7,22 @@ public class AccountList{
     
     //Navigation variables
     Integer counter = 0;
-    Integer pageSize = 5;
+    Integer pageSize = 0;
     Integer totalSize =0;
     
     //Constructor
     public AccountList(List<Account> accounts){
-         accountsToShow = new List<Account>();
+        accountsToShow = new List<Account>();
+        
+        //Setting page size dynamically using custom setting value
+        AccountManger__c am = AccountManger__c.getInstance();
+        //If page size is not setting defaulting the page size
+        if(am.Pagesize__c == null){
+            pagesize = 5;
+        }
+        else{
+            pagesize = integer.valueof(am.Pagesize__c);    
+        }
         
         //Set all the records 
         AllAccounts = accounts;
