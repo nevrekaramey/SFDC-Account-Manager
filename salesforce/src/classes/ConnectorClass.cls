@@ -5,7 +5,7 @@ public with sharing class ConnectorClass {
     String clientSecret = EncodingUtil.urlEncode('8389440981822293919','UTF-8');
     String username = EncodingUtil.urlEncode('remoteorg@worldofsalesforce.com','UTF-8');
     String password = EncodingUtil.urlEncode('orgremote16oTF3phhmnBFtWY5pmP1WsTNHu','UTF-8');
-    String reqbody = 'grant_type=password&client_id='+clientId+'&client_secret='+clientSecret+'&username='+username+'&password='+password+'&access_type=offline';
+    String reqbody = 'grant_type=password&client_id='+clientId+'&client_secret='+clientSecret+'&username='+username+'&password='+password;
     
     public OAuth2 authenticationInfo;
     private static ConnectorClass instance = new ConnectorClass();
