@@ -1,4 +1,6 @@
 public with sharing class ConnectorClass {
+
+    //OAUTH user/password information
     String clientId = EncodingUtil.urlEncode('3MVG9uudbyLbNPZOzOP.4rTsAV_2c2rxWZRWr7A449IcI.RalpoWgA1mOT9cYKAGpzu6jywO3NSanYnmxfmNI','UTF-8');
     String clientSecret = EncodingUtil.urlEncode('8389440981822293919','UTF-8');
     String username = EncodingUtil.urlEncode('remoteorg@worldofsalesforce.com','UTF-8');
@@ -7,7 +9,8 @@ public with sharing class ConnectorClass {
     
     public OAuth2 authenticationInfo;
     private static ConnectorClass instance = new ConnectorClass();
-    
+
+    //Singleton pattern to instantiate only instance so multiple connection are not created.
     private ConnectorClass(){
         HTTP h = new HTTP();
         HTTPRequest req = new HTTPRequest();
