@@ -10,6 +10,8 @@ Custom setting AccountManagerProperties has been added to local org which could 
 Rest Class below should be added to remote org to process incoming request
 - callAccount.cls
 
+To access the page in local org use Account Manager custom link from the Navigate home page component.
+
 To access the page directly as a guest user follow the link below:
 
 https://worldofrookie-developer-edition.na30.force.com/AccountManager
