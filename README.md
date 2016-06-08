@@ -5,6 +5,8 @@ Page and Classes below should be added to local org where you would like to view
 - AccountManager.cls
 - ConnectorClass.cls
 
+Custom setting AccountManagerProperties has been added to local org which could be used to dynamically set the page size.
+
 Rest Class below should be added to remote org to process incoming request
 - callAccount.cls
 
